@@ -9,17 +9,17 @@ import SwiftUI
 
 struct TabParentView: View {
     @EnvironmentObject var viewModel : MainViewModel
-    
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
+    var animation: Namespace.ID
+
+//    init() {
+//        UITabBar.appearance().isHidden = false
+//    }
     
     var body: some View {
         
         ZStack {
             TabView(selection: $viewModel.selectedTab) {
-                //Views
-                HomeScreen()
+                TodoView()
                     .tag("Home")
                 Completed()
                     .tag("Completed")
@@ -27,7 +27,7 @@ struct TabParentView: View {
                     .tag("Settings")
                 RateUs()
                     .tag("Rate us")
-            }
+            }.foregroundColor(Color.gray)
             if viewModel.showMenu {
                 Rectangle()
                     .fill(Color.clear)
@@ -49,18 +49,8 @@ struct TabParentView: View {
 }
 
 //Subviews
-struct HomeScreen: View {
-    var body: some View {
-        NavigationView{
-            
-            Text("Home")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-        }
-        
-    }
-}
+
+
 
 struct Completed: View {
     var body: some View {

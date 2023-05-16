@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 class MainViewModel: ObservableObject {
     //Shared Properties
@@ -36,6 +37,14 @@ class MainViewModel: ObservableObject {
     func toggleMenu() {
         withAnimation(.spring()) {
             showMenu.toggle()
+        }
+    }
+    
+    func toggleMenuAnimation(_ animationView: LottieAnimationView) {
+        if showMenu {
+            animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .playOnce, completion: nil)
+        } else {
+            animationView.play(fromProgress: 0.5, toProgress: 1.0, loopMode: .playOnce, completion: nil)
         }
     }
 }

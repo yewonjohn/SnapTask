@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct MainView: View {
     
     //MARK: - Properties
     @EnvironmentObject var mainViewModel: MainViewModel
-    
+    @Namespace var animation
+
     var body: some View {
         
         ZStack{
@@ -41,43 +43,41 @@ struct MainView: View {
                     .padding(.vertical, 60)
                 
                 
-                TabParentView()
+                TabParentView(animation: animation)
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
+                    .matchedGeometryEffect(id: "TabFromMenu", in: animation)
 
             }
             //Scaling and Moving the View
             .scaleEffect(mainViewModel.showMenu ? 0.84 : 1)
             .offset(x: mainViewModel.showMenu ? getRect().width - 120 : 0)
             .edgesIgnoringSafeArea(.all)
-            .overlay(
-            
-                Button(action: {
-                    mainViewModel.toggleMenu()
-                }, label: {
-                    //Animated Drawer Button
+        }
+        .overlay(
+            Button(action: {
+                mainViewModel.toggleMenu()
+            }, label: {
+                VStack(spacing: 5, content: {
+                    Capsule()
+                        .fill(mainViewModel.showMenu ? Color.white : Color.primary)
+                        .frame(width: 30, height: 3)
+                        .rotationEffect(.init(degrees: mainViewModel.showMenu ? -50 : 0))
+                        .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 9 : 0)
+
                     VStack(spacing: 5, content: {
                         Capsule()
                             .fill(mainViewModel.showMenu ? Color.white : Color.primary)
                             .frame(width: 30, height: 3)
-                            .rotationEffect(.init(degrees: mainViewModel.showMenu ? -50 : 0))
-                            .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 9 : 0)
-                        
-                        VStack(spacing: 5, content: {
-                            Capsule()
-                                .fill(mainViewModel.showMenu ? Color.white : Color.primary)
-                                .frame(width: 30, height: 3)
-                            Capsule()
-                                .fill(mainViewModel.showMenu ? Color.white : Color.primary)
-                                .frame(width: 30, height: 3)
-                                .offset(y: mainViewModel.showMenu ? -8 : 0)
-                        })
-                        .rotationEffect(.init(degrees: mainViewModel.showMenu ? 50 : 0))
+                        Capsule()
+                            .fill(mainViewModel.showMenu ? Color.white : Color.primary)
+                            .frame(width: 30, height: 3)
+                            .offset(y: mainViewModel.showMenu ? -8 : 0)
                     })
+                    .rotationEffect(.init(degrees: mainViewModel.showMenu ? 50 : 0))
                 })
-                .padding()
-                ,alignment: .topLeading
-            )
-                
-        }
+            })
+            .padding()
+            ,alignment: .bottomLeading
+        )
     }
 }

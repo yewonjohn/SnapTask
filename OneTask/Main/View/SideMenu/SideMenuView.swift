@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct SideMenuView: View {
     @Namespace var animation
@@ -14,10 +15,8 @@ struct SideMenuView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             //Profile Image
-            Image("profile")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70)
+            AvatarLottieView()
+                .frame(width: 30, height: 30)
                 .cornerRadius(10)
                 .padding(.top, 50)
             
@@ -62,3 +61,26 @@ struct SideMenuView: View {
     }
 }
 
+//Avatar Animation
+struct AvatarLottieView: UIViewRepresentable {
+    
+    func makeUIView(context: UIViewRepresentableContext<AvatarLottieView>) -> UIView {
+        let view = UIView(frame: .zero)
+
+        let animationView = LottieAnimationView(name: "check")
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        view.addSubview(animationView)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+        ])
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AvatarLottieView>) {
+    }
+}

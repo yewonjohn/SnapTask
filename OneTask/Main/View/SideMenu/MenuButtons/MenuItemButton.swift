@@ -19,7 +19,7 @@ struct MenuItemButton: View {
     var body: some View {
         
         Button(action: {
-            withAnimation(.spring()){viewModel.selectedTab = title}
+            withAnimation(.spring(response: 0.2)){viewModel.selectedTab = title}
         }, label: {
             HStack(spacing: 15){
                 

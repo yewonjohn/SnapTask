@@ -24,6 +24,9 @@
 		44A2744E2A0DE3F300B52886 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2744D2A0DE3F300B52886 /* MainViewModel.swift */; };
 		44A274592A0DF1AA00B52886 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274582A0DF1AA00B52886 /* Util.swift */; };
 		44A2745E2A0E7F7A00B52886 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */; };
+		44C5A4092A12A1830074E4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A4082A12A1830074E4E3 /* HomeView.swift */; };
+		44C5A40B2A12A7930074E4E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */; };
+		44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */; };
 		A5FECA6405F5502BB790A913 /* Pods_OneTask_OneTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8DEEBCF56141D67F23DC2D /* Pods_OneTask_OneTaskUITests.framework */; };
 		CCDF5AE80B6869788F0180F8 /* Pods_OneTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089CDD93ACC2FC523869570 /* Pods_OneTask.framework */; };
 		FEC6F0C5E08E1F24C2C83A1F /* Pods_OneTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8DBEC9F60A224F4915594 /* Pods_OneTaskTests.framework */; };
@@ -70,6 +73,9 @@
 		44A2744D2A0DE3F300B52886 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		44A274582A0DF1AA00B52886 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
+		44C5A4082A12A1830074E4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_thin.otf; sourceTree = "<group>"; };
 		5A5DBCCA08375A6AA9F3088B /* Pods-OneTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.release.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		67896C3BE047EF6706E32555 /* Pods-OneTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTask.release.xcconfig"; path = "Target Support Files/Pods-OneTask/Pods-OneTask.release.xcconfig"; sourceTree = "<group>"; };
 		6EB231C5CCCB51165E34505D /* Pods-OneTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 		44A273FB2A0DA14900B52886 = {
 			isa = PBXGroup;
 			children = (
+				44C5A40C2A12DBC20074E4E3 /* Fonts */,
 				44A274062A0DA14900B52886 /* OneTask */,
 				44A274202A0DA14B00B52886 /* OneTaskTests */,
 				44A2742A2A0DA14B00B52886 /* OneTaskUITests */,
@@ -136,6 +143,7 @@
 				44A274092A0DA14900B52886 /* SceneDelegate.swift */,
 				44A2743B2A0DA26600B52886 /* Shared */,
 				44A2744A2A0DE3C800B52886 /* Main */,
+				44C5A4052A12A15C0074E4E3 /* Home */,
 				44A274152A0DA14B00B52886 /* LaunchScreen.storyboard */,
 				44A274132A0DA14B00B52886 /* Assets.xcassets */,
 				44A274102A0DA14900B52886 /* OneTask.xcdatamodeld */,
@@ -240,6 +248,39 @@
 			path = TabParent;
 			sourceTree = "<group>";
 		};
+		44C5A4052A12A15C0074E4E3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				44C5A4062A12A1680074E4E3 /* View */,
+				44C5A4072A12A16C0074E4E3 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		44C5A4062A12A1680074E4E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44C5A4082A12A1830074E4E3 /* HomeView.swift */,
+				44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44C5A4072A12A16C0074E4E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		44C5A40C2A12DBC20074E4E3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		BE2FF0624432B22CF0FAD9F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +291,6 @@
 				6EB231C5CCCB51165E34505D /* Pods-OneTaskTests.debug.xcconfig */,
 				5A5DBCCA08375A6AA9F3088B /* Pods-OneTaskTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -373,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */,
 				44A274172A0DA14B00B52886 /* LaunchScreen.storyboard in Resources */,
 				44A274142A0DA14B00B52886 /* Assets.xcassets in Resources */,
 			);
@@ -504,6 +545,8 @@
 			files = (
 				44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */,
 				44A274122A0DA14900B52886 /* OneTask.xcdatamodeld in Sources */,
+				44C5A40B2A12A7930074E4E3 /* HomeScreen.swift in Sources */,
+				44C5A4092A12A1830074E4E3 /* HomeView.swift in Sources */,
 				44A274412A0DA50200B52886 /* MainView.swift in Sources */,
 				44A274592A0DF1AA00B52886 /* Util.swift in Sources */,
 				44A274472A0DC6F300B52886 /* SideMenuView.swift in Sources */,
@@ -611,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -665,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -691,6 +734,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -720,6 +764,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
