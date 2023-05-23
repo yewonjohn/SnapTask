@@ -12,6 +12,7 @@ class MainViewModel: ObservableObject {
     //Shared Properties
     @Published var selectedTab : String
     @Published var showMenu : Bool
+    @Published var showMenuButton : Bool = true
     //SideMenu Properties
     @Published var username: String = ""
     @Published var menuItems: [MenuItem] = []
@@ -22,11 +23,9 @@ class MainViewModel: ObservableObject {
         self.selectedTab = "Home"
         self.showMenu = false
         
-        self.username = "Yewon Kim"
+        self.username = "John Kim"
         self.menuItems = [MenuItem(image: "house", title: "Home"),
-                     MenuItem(image: "house", title: "Completed"),
-                     MenuItem(image: "house", title: "Settings"),
-                     MenuItem(image: "house", title: "Rate us")]
+                     MenuItem(image: "star", title: "Rate us")]
         self.appVersion = "1.2"
     }
     

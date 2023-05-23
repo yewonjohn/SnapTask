@@ -16,7 +16,7 @@ struct SideMenuView: View {
         VStack(alignment: .leading, spacing: 15) {
             //Profile Image
             AvatarLottieView()
-                .frame(width: 30, height: 30)
+                .frame(width: 150, height: 150)
                 .cornerRadius(10)
                 .padding(.top, 50)
             
@@ -67,7 +67,7 @@ struct AvatarLottieView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<AvatarLottieView>) -> UIView {
         let view = UIView(frame: .zero)
 
-        let animationView = LottieAnimationView(name: "check")
+        let animationView = LottieAnimationView(name: "male_avatar")
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.play()

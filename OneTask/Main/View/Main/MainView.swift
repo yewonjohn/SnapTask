@@ -17,7 +17,7 @@ struct MainView: View {
     var body: some View {
         
         ZStack{
-            Color.blue
+            Color.gray
                 .ignoresSafeArea()
             //Side menu
             ScrollView(getRect().height < 750 ? .vertical : .init(), showsIndicators: false, content: {
@@ -29,7 +29,6 @@ struct MainView: View {
                 Color.white
                     .opacity(0.5)
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
-                    //Shadow
                     .shadow(color: Color.black.opacity(0.07), radius: 5, x: -5, y: 0)
                     .offset(x: mainViewModel.showMenu ? -25 : 0)
                     .padding(.vertical, 30)
@@ -37,47 +36,48 @@ struct MainView: View {
                 Color.white
                     .opacity(0.4)
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
-                    //Shadow
                     .shadow(color: Color.black.opacity(0.07), radius: 5, x: -5, y: 0)
                     .offset(x: mainViewModel.showMenu ? -50 : 0)
                     .padding(.vertical, 60)
                 
-                
-                TabParentView(animation: animation)
+                TabParentView()
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
-                    .matchedGeometryEffect(id: "TabFromMenu", in: animation)
 
             }
             //Scaling and Moving the View
             .scaleEffect(mainViewModel.showMenu ? 0.84 : 1)
-            .offset(x: mainViewModel.showMenu ? getRect().width - 120 : 0)
+            .offset(x: mainViewModel.showMenu ? getRect().width - 140 : 0)
             .edgesIgnoringSafeArea(.all)
         }
         .overlay(
             Button(action: {
-                mainViewModel.toggleMenu()
+                if(mainViewModel.showMenuButton){
+                    mainViewModel.toggleMenu()
+                }
             }, label: {
-                VStack(spacing: 5, content: {
-                    Capsule()
-                        .fill(mainViewModel.showMenu ? Color.white : Color.primary)
-                        .frame(width: 30, height: 3)
-                        .rotationEffect(.init(degrees: mainViewModel.showMenu ? -50 : 0))
-                        .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 9 : 0)
-
                     VStack(spacing: 5, content: {
                         Capsule()
-                            .fill(mainViewModel.showMenu ? Color.white : Color.primary)
+                            .fill(mainViewModel.showMenu ? Color.white : Color.black)
                             .frame(width: 30, height: 3)
-                        Capsule()
-                            .fill(mainViewModel.showMenu ? Color.white : Color.primary)
-                            .frame(width: 30, height: 3)
-                            .offset(y: mainViewModel.showMenu ? -8 : 0)
+                            .rotationEffect(.init(degrees: mainViewModel.showMenu ? -50 : 0))
+                            .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 9 : 0)
+
+                        VStack(spacing: 5, content: {
+                            Capsule()
+                                .fill(mainViewModel.showMenu ? Color.white : Color.black)
+                                .frame(width: 30, height: 3)
+                            Capsule()
+                                .fill(mainViewModel.showMenu ? Color.white : Color.black)
+                                .frame(width: 30, height: 3)
+                                .offset(y: mainViewModel.showMenu ? -8 : 0)
+                        })
+                        .rotationEffect(.init(degrees: mainViewModel.showMenu ? 50 : 0))
                     })
-                    .rotationEffect(.init(degrees: mainViewModel.showMenu ? 50 : 0))
-                })
+                    .opacity(mainViewModel.showMenuButton ? 1 : 0.1)
+                    .animation(.easeInOut(duration: 0.3))
             })
             .padding()
-            ,alignment: .bottomLeading
+            ,alignment: .topLeading
         )
     }
 }

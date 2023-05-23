@@ -9,28 +9,27 @@ import SwiftUI
 
 struct TabParentView: View {
     @EnvironmentObject var viewModel : MainViewModel
-    var animation: Namespace.ID
 
-//    init() {
-//        UITabBar.appearance().isHidden = false
-//    }
+    init() {
+        UITabBar.appearance().isHidden = false
+    }
     
     var body: some View {
+        Color.white
+            .ignoresSafeArea()
         
         ZStack {
             TabView(selection: $viewModel.selectedTab) {
-                TodoView()
+                TodoView(viewModel)
                     .tag("Home")
-                Completed()
-                    .tag("Completed")
-                Settings()
-                    .tag("Settings")
                 RateUs()
                     .tag("Rate us")
-            }.foregroundColor(Color.gray)
+            }
+            .foregroundColor(Color.gray)
             if viewModel.showMenu {
                 Rectangle()
-                    .fill(Color.clear)
+                    .fill(Color.black)
+                    .opacity(0.2)
                     .contentShape(Rectangle())
                     .gesture(
                         DragGesture()
@@ -48,35 +47,6 @@ struct TabParentView: View {
     }
 }
 
-//Subviews
-
-
-
-struct Completed: View {
-    var body: some View {
-        NavigationView{
-            
-            Text("Completed")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-//                .navigationTitle("Completed")
-        }
-    }
-}
-
-struct Settings: View {
-    var body: some View {
-        NavigationView{
-            
-            Text("Settings")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-//                .navigationTitle("Settings")
-        }
-    }
-}
 
 struct RateUs: View {
     var body: some View {

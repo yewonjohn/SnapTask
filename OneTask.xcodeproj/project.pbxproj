@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4419ABD62A140F82009DC89A /* AddTaskOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */; };
+		4419ABD82A155612009DC89A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419ABD72A155612009DC89A /* HomeViewModel.swift */; };
+		4419ABDA2A159347009DC89A /* proxima_nova_semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */; };
+		4473E4422A1809CD00B62F0F /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473E4412A1809CD00B62F0F /* TaskItem.swift */; };
 		44A274082A0DA14900B52886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274072A0DA14900B52886 /* AppDelegate.swift */; };
 		44A2740A2A0DA14900B52886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274092A0DA14900B52886 /* SceneDelegate.swift */; };
 		44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2740B2A0DA14900B52886 /* MainViewController.swift */; };
@@ -52,6 +56,10 @@
 /* Begin PBXFileReference section */
 		06C8DBEC9F60A224F4915594 /* Pods_OneTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A03E2ECB5D62CC3D6E8BA62 /* Pods-OneTask-OneTaskUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTask-OneTaskUITests.debug.xcconfig"; path = "Target Support Files/Pods-OneTask-OneTaskUITests/Pods-OneTask-OneTaskUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskOverlayView.swift; sourceTree = "<group>"; };
+		4419ABD72A155612009DC89A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_semibold.otf; sourceTree = "<group>"; };
+		4473E4412A1809CD00B62F0F /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		44A274042A0DA14900B52886 /* OneTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A274072A0DA14900B52886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44A274092A0DA14900B52886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4473E4402A1809C200B62F0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4473E4412A1809CD00B62F0F /* TaskItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		44A273FB2A0DA14900B52886 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +267,7 @@
 		44C5A4052A12A15C0074E4E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4473E4402A1809C200B62F0F /* Model */,
 				44C5A4062A12A1680074E4E3 /* View */,
 				44C5A4072A12A16C0074E4E3 /* ViewModel */,
 			);
@@ -262,6 +279,7 @@
 			children = (
 				44C5A4082A12A1830074E4E3 /* HomeView.swift */,
 				44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */,
+				4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +287,7 @@
 		44C5A4072A12A16C0074E4E3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4419ABD72A155612009DC89A /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -277,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */,
+				4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -414,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */,
+				4419ABDA2A159347009DC89A /* proxima_nova_semibold.otf in Resources */,
 				44A274172A0DA14B00B52886 /* LaunchScreen.storyboard in Resources */,
 				44A274142A0DA14B00B52886 /* Assets.xcassets in Resources */,
 			);
@@ -545,10 +566,13 @@
 			files = (
 				44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */,
 				44A274122A0DA14900B52886 /* OneTask.xcdatamodeld in Sources */,
+				4473E4422A1809CD00B62F0F /* TaskItem.swift in Sources */,
 				44C5A40B2A12A7930074E4E3 /* HomeScreen.swift in Sources */,
+				4419ABD82A155612009DC89A /* HomeViewModel.swift in Sources */,
 				44C5A4092A12A1830074E4E3 /* HomeView.swift in Sources */,
 				44A274412A0DA50200B52886 /* MainView.swift in Sources */,
 				44A274592A0DF1AA00B52886 /* Util.swift in Sources */,
+				4419ABD62A140F82009DC89A /* AddTaskOverlayView.swift in Sources */,
 				44A274472A0DC6F300B52886 /* SideMenuView.swift in Sources */,
 				44A274492A0DC7AC00B52886 /* TabParentView.swift in Sources */,
 				44A2744E2A0DE3F300B52886 /* MainViewModel.swift in Sources */,

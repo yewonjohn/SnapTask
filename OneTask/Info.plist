@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>proxima_nova_thin</string>
+		<string>proxima_nova_semibold</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
