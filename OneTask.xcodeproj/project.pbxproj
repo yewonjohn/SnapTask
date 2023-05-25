@@ -28,8 +28,9 @@
 		44A2744E2A0DE3F300B52886 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2744D2A0DE3F300B52886 /* MainViewModel.swift */; };
 		44A274592A0DF1AA00B52886 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274582A0DF1AA00B52886 /* Util.swift */; };
 		44A2745E2A0E7F7A00B52886 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */; };
-		44C5A4092A12A1830074E4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A4082A12A1830074E4E3 /* HomeView.swift */; };
-		44C5A40B2A12A7930074E4E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */; };
+		44C0FBC92A1FB7D400276D4C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBC82A1FB7D400276D4C /* TaskCell.swift */; };
+		44C0FBCE2A2009AE00276D4C /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBCD2A2009AE00276D4C /* TaskCellViewModel.swift */; };
+		44C5A40B2A12A7930074E4E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */; };
 		44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */; };
 		A5FECA6405F5502BB790A913 /* Pods_OneTask_OneTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8DEEBCF56141D67F23DC2D /* Pods_OneTask_OneTaskUITests.framework */; };
 		CCDF5AE80B6869788F0180F8 /* Pods_OneTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089CDD93ACC2FC523869570 /* Pods_OneTask.framework */; };
@@ -81,8 +82,9 @@
 		44A2744D2A0DE3F300B52886 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		44A274582A0DF1AA00B52886 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
-		44C5A4082A12A1830074E4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		44C0FBC82A1FB7D400276D4C /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		44C0FBCD2A2009AE00276D4C /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_thin.otf; sourceTree = "<group>"; };
 		5A5DBCCA08375A6AA9F3088B /* Pods-OneTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.release.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		67896C3BE047EF6706E32555 /* Pods-OneTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTask.release.xcconfig"; path = "Target Support Files/Pods-OneTask/Pods-OneTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +266,31 @@
 			path = TabParent;
 			sourceTree = "<group>";
 		};
+		44C0FBCA2A1FBBFB00276D4C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				44C0FBCB2A20099800276D4C /* View */,
+				44C0FBCC2A20099D00276D4C /* ViewModel */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		44C0FBCB2A20099800276D4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44C0FBC82A1FB7D400276D4C /* TaskCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44C0FBCC2A20099D00276D4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44C0FBCD2A2009AE00276D4C /* TaskCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		44C5A4052A12A15C0074E4E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,9 +304,9 @@
 		44C5A4062A12A1680074E4E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44C5A4082A12A1830074E4E3 /* HomeView.swift */,
-				44C5A40A2A12A7930074E4E3 /* HomeScreen.swift */,
+				44C0FBCA2A1FBBFB00276D4C /* Cell */,
 				4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */,
+				44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -567,9 +594,8 @@
 				44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */,
 				44A274122A0DA14900B52886 /* OneTask.xcdatamodeld in Sources */,
 				4473E4422A1809CD00B62F0F /* TaskItem.swift in Sources */,
-				44C5A40B2A12A7930074E4E3 /* HomeScreen.swift in Sources */,
+				44C5A40B2A12A7930074E4E3 /* HomeViewController.swift in Sources */,
 				4419ABD82A155612009DC89A /* HomeViewModel.swift in Sources */,
-				44C5A4092A12A1830074E4E3 /* HomeView.swift in Sources */,
 				44A274412A0DA50200B52886 /* MainView.swift in Sources */,
 				44A274592A0DF1AA00B52886 /* Util.swift in Sources */,
 				4419ABD62A140F82009DC89A /* AddTaskOverlayView.swift in Sources */,
@@ -580,6 +606,8 @@
 				44A274432A0DBEDA00B52886 /* MenuItemButton.swift in Sources */,
 				44A274082A0DA14900B52886 /* AppDelegate.swift in Sources */,
 				44A274452A0DC29900B52886 /* CustomCorners.swift in Sources */,
+				44C0FBCE2A2009AE00276D4C /* TaskCellViewModel.swift in Sources */,
+				44C0FBC92A1FB7D400276D4C /* TaskCell.swift in Sources */,
 				44A2740A2A0DA14900B52886 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

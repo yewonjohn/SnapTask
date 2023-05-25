@@ -39,6 +39,10 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    func disableMenuButton() {
+        showMenu = false
+    }
+    
     func toggleMenuAnimation(_ animationView: LottieAnimationView) {
         if showMenu {
             animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .playOnce, completion: nil)
