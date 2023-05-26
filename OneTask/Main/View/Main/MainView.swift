@@ -76,6 +76,7 @@ struct MainView: View {
                     .opacity(mainViewModel.showMenuButton ? 1 : 0.1)
                     .animation(.easeInOut(duration: 0.3))
             })
+            .disabled(!mainViewModel.showMenuButton)
             .padding()
             ,alignment: .topLeading
         )

@@ -10,7 +10,7 @@
 		4419ABD62A140F82009DC89A /* AddTaskOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */; };
 		4419ABD82A155612009DC89A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419ABD72A155612009DC89A /* HomeViewModel.swift */; };
 		4419ABDA2A159347009DC89A /* proxima_nova_semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */; };
-		4473E4422A1809CD00B62F0F /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473E4412A1809CD00B62F0F /* TaskItem.swift */; };
+		4473E4422A1809CD00B62F0F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473E4412A1809CD00B62F0F /* Task.swift */; };
 		44A274082A0DA14900B52886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274072A0DA14900B52886 /* AppDelegate.swift */; };
 		44A2740A2A0DA14900B52886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A274092A0DA14900B52886 /* SceneDelegate.swift */; };
 		44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2740B2A0DA14900B52886 /* MainViewController.swift */; };
@@ -30,6 +30,7 @@
 		44A2745E2A0E7F7A00B52886 /* LogoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */; };
 		44C0FBC92A1FB7D400276D4C /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBC82A1FB7D400276D4C /* TaskCell.swift */; };
 		44C0FBCE2A2009AE00276D4C /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBCD2A2009AE00276D4C /* TaskCellViewModel.swift */; };
+		44C0FBD32A2017D900276D4C /* AddTaskOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBD22A2017D900276D4C /* AddTaskOverlayViewModel.swift */; };
 		44C5A40B2A12A7930074E4E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */; };
 		44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */; };
 		A5FECA6405F5502BB790A913 /* Pods_OneTask_OneTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8DEEBCF56141D67F23DC2D /* Pods_OneTask_OneTaskUITests.framework */; };
@@ -60,7 +61,7 @@
 		4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskOverlayView.swift; sourceTree = "<group>"; };
 		4419ABD72A155612009DC89A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_semibold.otf; sourceTree = "<group>"; };
-		4473E4412A1809CD00B62F0F /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		4473E4412A1809CD00B62F0F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		44A274042A0DA14900B52886 /* OneTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A274072A0DA14900B52886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44A274092A0DA14900B52886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		44A2745D2A0E7F7A00B52886 /* LogoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutButton.swift; sourceTree = "<group>"; };
 		44C0FBC82A1FB7D400276D4C /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		44C0FBCD2A2009AE00276D4C /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		44C0FBD22A2017D900276D4C /* AddTaskOverlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskOverlayViewModel.swift; sourceTree = "<group>"; };
 		44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_thin.otf; sourceTree = "<group>"; };
 		5A5DBCCA08375A6AA9F3088B /* Pods-OneTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.release.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 		4473E4402A1809C200B62F0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4473E4412A1809CD00B62F0F /* TaskItem.swift */,
+				4473E4412A1809CD00B62F0F /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,13 +268,13 @@
 			path = TabParent;
 			sourceTree = "<group>";
 		};
-		44C0FBCA2A1FBBFB00276D4C /* Cell */ = {
+		44C0FBCA2A1FBBFB00276D4C /* TaskCell */ = {
 			isa = PBXGroup;
 			children = (
 				44C0FBCB2A20099800276D4C /* View */,
 				44C0FBCC2A20099D00276D4C /* ViewModel */,
 			);
-			path = Cell;
+			path = TaskCell;
 			sourceTree = "<group>";
 		};
 		44C0FBCB2A20099800276D4C /* View */ = {
@@ -291,6 +293,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		44C0FBCF2A2017B400276D4C /* AddTaskOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				44C0FBD02A2017C400276D4C /* View */,
+				44C0FBD12A2017C700276D4C /* ViewModel */,
+			);
+			path = AddTaskOverlay;
+			sourceTree = "<group>";
+		};
+		44C0FBD02A2017C400276D4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44C0FBD12A2017C700276D4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44C0FBD22A2017D900276D4C /* AddTaskOverlayViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		44C5A4052A12A15C0074E4E3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,8 +331,8 @@
 		44C5A4062A12A1680074E4E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44C0FBCA2A1FBBFB00276D4C /* Cell */,
-				4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */,
+				44C0FBCF2A2017B400276D4C /* AddTaskOverlay */,
+				44C0FBCA2A1FBBFB00276D4C /* TaskCell */,
 				44C5A40A2A12A7930074E4E3 /* HomeViewController.swift */,
 			);
 			path = View;
@@ -593,7 +620,8 @@
 			files = (
 				44A2740C2A0DA14900B52886 /* MainViewController.swift in Sources */,
 				44A274122A0DA14900B52886 /* OneTask.xcdatamodeld in Sources */,
-				4473E4422A1809CD00B62F0F /* TaskItem.swift in Sources */,
+				44C0FBD32A2017D900276D4C /* AddTaskOverlayViewModel.swift in Sources */,
+				4473E4422A1809CD00B62F0F /* Task.swift in Sources */,
 				44C5A40B2A12A7930074E4E3 /* HomeViewController.swift in Sources */,
 				4419ABD82A155612009DC89A /* HomeViewModel.swift in Sources */,
 				44A274412A0DA50200B52886 /* MainView.swift in Sources */,

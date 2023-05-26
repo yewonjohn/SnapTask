@@ -9,14 +9,14 @@ import Foundation
 
 class HomeViewModel {
     
-    var tasks : [TaskItem] = []
+    var tasks : [Task] = []
     
     init() {
         self.populateData()
     }
 
     private func populateData(){
-        tasks = [TaskItem(name: "something to do ", isComplete: false), TaskItem(name: "get bread", isComplete: false), TaskItem(name: "buy groceries", isComplete: false),TaskItem(name: "play boardgames", isComplete: false), TaskItem(name: "do task 5", isComplete: false), TaskItem(name: "help something with niece", isComplete: false), TaskItem(name: "buy something from amazon", isComplete: false), TaskItem(name: "study this", isComplete: false),TaskItem(name: "study that", isComplete: false), TaskItem(name: "study something", isComplete: false),TaskItem(name: "eat cereal", isComplete: false), TaskItem(name: "workout legs", isComplete: false), TaskItem(name: "workout right arm", isComplete: false),TaskItem(name: "workout hips", isComplete: false), TaskItem(name: "sit up straight", isComplete: false),TaskItem(name: "implement a better note taking app", isComplete: false), TaskItem(name: "this is pretty good", isComplete: false), TaskItem(name: "publish to app store", isComplete: false),TaskItem(name: "publish to connect", isComplete: false), TaskItem(name: "dispatch to test group", isComplete: false)]
+        tasks = [Task(name: "something to do ", isComplete: false), Task(name: "get bread", isComplete: false), Task(name: "buy groceries", isComplete: false),Task(name: "play boardgames", isComplete: false), Task(name: "do task 5", isComplete: false), Task(name: "help something with niece", isComplete: false), Task(name: "buy something from amazon", isComplete: false), Task(name: "study this", isComplete: false),Task(name: "study that", isComplete: false), Task(name: "study something", isComplete: false),Task(name: "eat cereal", isComplete: false), Task(name: "workout legs", isComplete: false), Task(name: "workout right arm", isComplete: false),Task(name: "workout hips", isComplete: false), Task(name: "sit up straight", isComplete: false),Task(name: "implement a better note taking app", isComplete: false), Task(name: "this is pretty good", isComplete: false), Task(name: "publish to app store", isComplete: false),Task(name: "publish to connect", isComplete: false), Task(name: "dispatch to test group", isComplete: false)]
     }
     
     func removeTask(at index: Int) {

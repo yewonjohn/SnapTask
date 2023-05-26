@@ -11,9 +11,9 @@ import Lottie
 import Combine
 
 class TaskCell : UITableViewCell {
-    
-    //MARK: - Properties
     static let resuseIdentifier = "TaskCell"
+
+    //MARK: - Properties
     var viewModel : TaskCellViewModel?
     var panGestureRecognizer: UIPanGestureRecognizer!
 
@@ -70,7 +70,7 @@ class TaskCell : UITableViewCell {
     }
     
     //MARK: - Setup methods
-    func configure(with item: TaskItem, viewModel: TaskCellViewModel) {
+    func configure(with item: Task, viewModel: TaskCellViewModel) {
         self.viewModel = viewModel
         viewModel.task = item
         self.taskLabel.text = item.name

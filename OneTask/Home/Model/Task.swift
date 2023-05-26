@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TaskItem {
+struct Task {
     var name: String
     var isComplete: Bool = false
     var completeTriggered : CompleteTriggered = .incomplete

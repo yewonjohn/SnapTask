@@ -40,7 +40,7 @@ class MainViewModel: ObservableObject {
     }
     
     func disableMenuButton() {
-        showMenu = false
+        self.showMenuButton = false
     }
     
     func toggleMenuAnimation(_ animationView: LottieAnimationView) {

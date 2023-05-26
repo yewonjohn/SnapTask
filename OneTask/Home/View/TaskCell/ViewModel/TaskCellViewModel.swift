@@ -10,7 +10,7 @@ import Combine
 
 class TaskCellViewModel {
     
-    var task: TaskItem!
+    var task: Task!
     var cancellables: Set<AnyCancellable> = []
     private(set) var deleteTapped = PassthroughSubject<TaskCell?, Never>()
     private(set) var completeTriggered = PassthroughSubject<TaskCell?, Never>()

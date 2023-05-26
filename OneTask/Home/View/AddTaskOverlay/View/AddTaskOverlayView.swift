@@ -8,28 +8,29 @@
 import UIKit
 import SwiftUI
 
-protocol AddTaskOverlayViewDelegate {
-    func addTask(_ task: String)
-    func closeTapped()
-}
-
 class AddTaskOverlayView: UIView {
-    
-    var delegate : AddTaskOverlayViewDelegate?
+    //MARK: - Properties
+    var viewModel: AddTaskOverlayViewModel?
     var panGestureRecognizer: UIPanGestureRecognizer!
 
-    required init(_ viewModel: MainViewModel){
+    //MARK: - Lifecycle methods
+    required init(_ viewModel: AddTaskOverlayViewModel){
         super.init(frame: CGRect.zero)
+        self.viewModel = viewModel
         configureLayout()
         initializeHideKeyboard()
         addDoneButtonToKeyboard(textInput: taskTextView)
-        self.alpha = 0
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        viewModel?.removeCancellables()
+    }
+    
+    //MARK: - UI Properties
     lazy var taskTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 30)
@@ -64,13 +65,16 @@ class AddTaskOverlayView: UIView {
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
+    //MARK: - Setup methods
     private func configureLayout() {
+        alpha = 0
         backgroundColor = .white
+        isHidden = true
+
         addSubview(taskTextView)
         addSubview(closeButton)
         addSubview(addTaskButton)
-        isHidden = true
         
         taskTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         taskTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
@@ -88,6 +92,7 @@ class AddTaskOverlayView: UIView {
         addTaskButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    //MARK: - Action methods
     @objc private func addTaskButtonTapped() {
         guard let taskText = taskTextView.text, taskText != "" else {
             UIView.animate(withDuration: 0.3, animations: {
@@ -103,7 +108,7 @@ class AddTaskOverlayView: UIView {
         }) { _ in
             self.isHidden = true
         }
-        delegate?.addTask(taskTextView.text)
+        viewModel?.addTask(taskTextView.text)
         taskTextView.text = ""
         endEditing(true)
     }
@@ -114,7 +119,7 @@ class AddTaskOverlayView: UIView {
         }) { _ in
             self.isHidden = true
         }
-        delegate?.closeTapped()
+        viewModel?.dismissScreen()
         endEditing(true)
     }
     
@@ -132,7 +137,7 @@ class AddTaskOverlayView: UIView {
     
 }
 
-//Adding Done Button on Keyboard
+//MARK: - Keyboard config
 extension AddTaskOverlayView {
     func addDoneButtonToKeyboard(textInput: UITextInput) {
         let toolbar = UIToolbar()

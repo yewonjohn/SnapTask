@@ -36,7 +36,23 @@ class HomeViewController : UIViewController {
     
     //MARK: - UI Properties
     lazy var addTaskOverlayView : AddTaskOverlayView = {
-        let addTaskOverlayView = AddTaskOverlayView(mainViewModel)
+        let addTaskOverlayView = AddTaskOverlayView(AddTaskOverlayViewModel())
+        if let viewModel = addTaskOverlayView.viewModel {
+            viewModel.addTask.compactMap{$0}
+                .sink{ text in
+                    let newTask = Task(name: text)
+                    self.homeViewModel.tasks.append(newTask)
+                    self.tableView.reloadData()
+                    self.mainViewModel.showMenuButton = true
+                }.store(in: &viewModel.cancellables)
+            
+            viewModel.closeTapped.compactMap{$0}
+                .sink{
+                    self.mainViewModel.showMenuButton = true
+                }.store(in: &viewModel.cancellables)
+        }
+
+        
         return addTaskOverlayView
     }()
     
@@ -82,7 +98,8 @@ class HomeViewController : UIViewController {
         tableView.backgroundColor = .white
         return tableView
     }()
-    
+
+    //MARK: - Setup methods
     func configureLayout(){
         view.backgroundColor = .white
         
@@ -92,8 +109,6 @@ class HomeViewController : UIViewController {
         headerView.addSubview(titleLabel)
         view.addSubview(tableView)
         view.addSubview(addTaskOverlayView)
-        
-        addTaskOverlayView.delegate = self
         
         backgroundView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
         backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -125,9 +140,8 @@ class HomeViewController : UIViewController {
         addTaskOverlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
-
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
-    
+//MARK: - Gesture animations
+extension HomeViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -169,33 +183,33 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIGes
         let font = UIFont.systemFont(ofSize: fontSize)
         titleLabel.font = font
         
-             switch recognizer.state {
-             case .changed:
-                 if scrollView.isDragging == false && scrollView.isDecelerating == false {
-                     if offsetY > 0 {
-                         addTaskOverlayView.isHidden = false
-                         UIView.animate(withDuration: 0.5) {
-                             self.addTaskOverlayView.alpha = 1.0
-                         }
-                         self.headerIcon.play(fromProgress: limitProgress, toProgress: 0, loopMode: .playOnce)
-                     }
-                 }
-                 if(offsetY < 0){
-                     let maxScale: CGFloat = 1.5
-                     let minScale: CGFloat = 1.0
-
-                     let scaleRange = maxScale - minScale
-                     let scale = min(maxScale, max(minScale, 1 + (-offsetY / maxScrollOffset) * scaleRange))
-                     
-                     headerIcon.transform = CGAffineTransform(scaleX: scale, y: scale)
-                     headerIcon.currentProgress = limitProgress
-                 }
-             default:
-                 break
-             }
-
-        
+        switch recognizer.state {
+            case .changed:
+                if scrollView.isDragging == false && scrollView.isDecelerating == false {
+                    if offsetY > 0 {
+                        addTaskOverlayView.isHidden = false
+                        UIView.animate(withDuration: 0.5) {
+                            self.addTaskOverlayView.alpha = 1.0
+                        }
+                        self.headerIcon.play(fromProgress: limitProgress, toProgress: 0, loopMode: .playOnce)
+                    }
+                }
+                if(offsetY < 0){
+                    let maxScale: CGFloat = 1.5
+                    let minScale: CGFloat = 1.0
+                    let scaleRange = maxScale - minScale
+                    let scale = min(maxScale, max(minScale, 1 + (-offsetY / maxScrollOffset) * scaleRange))
+                    headerIcon.transform = CGAffineTransform(scaleX: scale, y: scale)
+                    headerIcon.currentProgress = limitProgress
+                }
+            default:
+                break
+        }
     }
+}
+
+//MARK: - Tableview config
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeViewModel.tasks.count
@@ -224,7 +238,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIGes
                     self.homeViewModel.toggleTaskCompletion(at: indexPath.row)
                 }.store(in: &viewModel.cancellables)
         }
-
         return cell
     }
     
@@ -237,19 +250,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, UIGes
     }
 }
 
-extension HomeViewController : AddTaskOverlayViewDelegate {
-    func addTask(_ task: String) {
-        let newTask = TaskItem(name: task)
-        self.homeViewModel.tasks.append(newTask)
-        self.tableView.reloadData()
-        self.mainViewModel.showMenuButton = true
-    }
-    
-    func closeTapped() {
-        self.mainViewModel.showMenuButton = true
-    }
-}
-
+//MARK: - UIViewControllerRepresentable
 struct TodoView: UIViewControllerRepresentable {
     let viewModel : MainViewModel
 
