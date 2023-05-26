@@ -125,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		441787E12A204EA20091C84A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44A274462A0DC6F300B52886 /* SideMenuView.swift */,
+				44A2745F2A0E812100B52886 /* MenuButtons */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		441787E22A204EB30091C84A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44A274482A0DC7AC00B52886 /* TabParentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4473E4402A1809C200B62F0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +180,9 @@
 				44A274092A0DA14900B52886 /* SceneDelegate.swift */,
 				44A2743B2A0DA26600B52886 /* Shared */,
 				44A2744A2A0DE3C800B52886 /* Main */,
-				44C5A4052A12A15C0074E4E3 /* Home */,
+				44A2745C2A0E7ABF00B52886 /* SideMenu */,
+				44A274622A0E81C400B52886 /* TabParent */,
+				44C5A4052A12A15C0074E4E3 /* Tasks */,
 				44A274152A0DA14B00B52886 /* LaunchScreen.storyboard */,
 				44A274132A0DA14B00B52886 /* Assets.xcassets */,
 				44A274102A0DA14900B52886 /* OneTask.xcdatamodeld */,
@@ -217,9 +236,8 @@
 		44A2744C2A0DE3DD00B52886 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				44A274612A0E81B700B52886 /* Main */,
-				44A2745C2A0E7ABF00B52886 /* SideMenu */,
-				44A274622A0E81C400B52886 /* TabParent */,
+				44A2740B2A0DA14900B52886 /* MainViewController.swift */,
+				44A274402A0DA50200B52886 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,10 +254,10 @@
 		44A2745C2A0E7ABF00B52886 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				44A2745F2A0E812100B52886 /* MenuButtons */,
-				44A274462A0DC6F300B52886 /* SideMenuView.swift */,
+				441787E12A204EA20091C84A /* View */,
 			);
-			path = SideMenu;
+			name = SideMenu;
+			path = Main/View/SideMenu;
 			sourceTree = "<group>";
 		};
 		44A2745F2A0E812100B52886 /* MenuButtons */ = {
@@ -251,21 +269,13 @@
 			path = MenuButtons;
 			sourceTree = "<group>";
 		};
-		44A274612A0E81B700B52886 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				44A2740B2A0DA14900B52886 /* MainViewController.swift */,
-				44A274402A0DA50200B52886 /* MainView.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		44A274622A0E81C400B52886 /* TabParent */ = {
 			isa = PBXGroup;
 			children = (
-				44A274482A0DC7AC00B52886 /* TabParentView.swift */,
+				441787E22A204EB30091C84A /* View */,
 			);
-			path = TabParent;
+			name = TabParent;
+			path = Main/View/TabParent;
 			sourceTree = "<group>";
 		};
 		44C0FBCA2A1FBBFB00276D4C /* TaskCell */ = {
@@ -318,14 +328,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		44C5A4052A12A15C0074E4E3 /* Home */ = {
+		44C5A4052A12A15C0074E4E3 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
 				4473E4402A1809C200B62F0F /* Model */,
 				44C5A4062A12A1680074E4E3 /* View */,
 				44C5A4072A12A16C0074E4E3 /* ViewModel */,
 			);
-			path = Home;
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		44C5A4062A12A1680074E4E3 /* View */ = {
