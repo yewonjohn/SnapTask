@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  TaskViewController.swift
 //  OneTask
 //
 //  Created by John Kim on 5/15/23.
@@ -11,14 +11,14 @@ import Lottie
 import SwiftUI
 import Combine
 
-class HomeViewController : UIViewController {
+class TasksViewController : UIViewController {
     //MARK: - Properties
     let mainViewModel : MainViewModel
-    let homeViewModel: HomeViewModel
+    let homeViewModel: TasksViewModel
     var rowStates: [IndexPath: Bool] = [:]
 
     //MARK: - Lifecycle methods
-    init(viewModel: MainViewModel, homeViewModel: HomeViewModel) {
+    init(viewModel: MainViewModel, homeViewModel: TasksViewModel) {
         self.mainViewModel = viewModel
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
@@ -40,15 +40,15 @@ class HomeViewController : UIViewController {
         if let viewModel = addTaskOverlayView.viewModel {
             viewModel.addTask.compactMap{$0}
                 .sink{ text in
-                    let newTask = Task(name: text)
-                    self.homeViewModel.tasks.append(newTask)
-                    self.tableView.reloadData()
-                    self.mainViewModel.showMenuButton = true
+                    self.homeViewModel.addTask(text: text) {
+                        self.tableView.reloadData()
+                    }
+                    self.mainViewModel.enableMenuButton()
                 }.store(in: &viewModel.cancellables)
             
             viewModel.closeTapped.compactMap{$0}
                 .sink{
-                    self.mainViewModel.showMenuButton = true
+                    self.mainViewModel.enableMenuButton()
                 }.store(in: &viewModel.cancellables)
         }
 
@@ -110,10 +110,10 @@ class HomeViewController : UIViewController {
         view.addSubview(tableView)
         view.addSubview(addTaskOverlayView)
         
-        backgroundView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
         headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -141,7 +141,7 @@ class HomeViewController : UIViewController {
     }
 }
 //MARK: - Gesture animations
-extension HomeViewController : UIGestureRecognizerDelegate {
+extension TasksViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -209,7 +209,7 @@ extension HomeViewController : UIGestureRecognizerDelegate {
 }
 
 //MARK: - Tableview config
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+extension TasksViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return homeViewModel.tasks.count
@@ -221,21 +221,28 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
 
         cell.configure(with: task, viewModel: TaskCellViewModel())
         if let viewModel = cell.viewModel {
+            
+            viewModel.completeTriggered.compactMap{$0}
+                .sink { taskCell in
+                    guard let indexPath = tableView.indexPath(for: taskCell) else { return }
+                    self.homeViewModel.completeTask(at: indexPath.row)
+                }.store(in: &viewModel.cancellables)
+            
+            viewModel.incompleteTriggered.compactMap{$0}
+                .sink { taskCell in
+                    guard let indexPath = tableView.indexPath(for: taskCell) else { return }
+                    self.homeViewModel.incompleteTask(at: indexPath.row)
+                }.store(in: &viewModel.cancellables)
+            
             viewModel.deleteTapped.compactMap{$0}
-                .sink { task in
-                    guard let indexPath = tableView.indexPath(for: task) else { return }
+                .sink { taskCell in
+                    guard let indexPath = tableView.indexPath(for: taskCell) else { return }
                         UIView.animate(withDuration: 0.3) {
                             self.homeViewModel.removeTask(at: indexPath.row)
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .left)
                             self.tableView.endUpdates()
                         }
-                }.store(in: &viewModel.cancellables)
-            
-            viewModel.completeTriggered.compactMap{$0}
-                .sink { task in
-                    guard let indexPath = tableView.indexPath(for: task) else { return }
-                    self.homeViewModel.toggleTaskCompletion(at: indexPath.row)
                 }.store(in: &viewModel.cancellables)
         }
         return cell
@@ -258,11 +265,11 @@ struct TodoView: UIViewControllerRepresentable {
         self.viewModel = viewModel
     }
 
-    func makeUIViewController(context: Context) -> HomeViewController {
-        let todoViewController = HomeViewController(viewModel: viewModel, homeViewModel: HomeViewModel())
+    func makeUIViewController(context: Context) -> TasksViewController {
+        let todoViewController = TasksViewController(viewModel: viewModel, homeViewModel: TasksViewModel())
         return todoViewController
     }
     
-    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: TasksViewController, context: Context) {
     }
 }

@@ -9,10 +9,6 @@ import SwiftUI
 
 struct TabParentView: View {
     @EnvironmentObject var viewModel : MainViewModel
-
-    init() {
-        UITabBar.appearance().isHidden = false
-    }
     
     var body: some View {
         Color.white
@@ -22,10 +18,9 @@ struct TabParentView: View {
             TabView(selection: $viewModel.selectedTab) {
                 TodoView(viewModel)
                     .tag("Home")
-                RateUs()
-                    .tag("Rate us")
             }
-            .foregroundColor(Color.gray)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
             if viewModel.showMenu {
                 Rectangle()
                     .fill(Color.black)
@@ -47,16 +42,17 @@ struct TabParentView: View {
     }
 }
 
+struct DisableTabBar: ViewModifier {
+    @State private var isHidden: Bool = false
 
-struct RateUs: View {
-    var body: some View {
-        NavigationView{
-            
-            Text("Rate us")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-//                .navigationTitle("Rate us")
-        }
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                isHidden = true
+            }
+            .onDisappear {
+                isHidden = false
+            }
+            .edgesIgnoringSafeArea(isHidden ? .all : [])
     }
 }

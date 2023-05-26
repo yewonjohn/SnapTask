@@ -24,8 +24,7 @@ class MainViewModel: ObservableObject {
         self.showMenu = false
         
         self.username = "John Kim"
-        self.menuItems = [MenuItem(image: "house", title: "Home"),
-                     MenuItem(image: "star", title: "Rate us")]
+        self.menuItems = [MenuItem(image: "house", title: "Home")]
         self.appVersion = "1.2"
     }
     
@@ -41,6 +40,10 @@ class MainViewModel: ObservableObject {
     
     func disableMenuButton() {
         self.showMenuButton = false
+    }
+    
+    func enableMenuButton(){
+        self.showMenuButton = true
     }
     
     func toggleMenuAnimation(_ animationView: LottieAnimationView) {

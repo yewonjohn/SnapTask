@@ -73,7 +73,7 @@ class TaskCell : UITableViewCell {
     func configure(with item: Task, viewModel: TaskCellViewModel) {
         self.viewModel = viewModel
         viewModel.task = item
-        self.taskLabel.text = item.name
+        self.taskLabel.text = item.text
         self.setup()
     }
     
@@ -142,36 +142,32 @@ class TaskCell : UITableViewCell {
                 
                 
                 //animation: swiping strikethrough right
-                if(!viewModel.task.isComplete && progress < 0.20){
+                if(!viewModel.task.isComplete && progress < 0.20 && progress > 0){
                     strikethroughView.currentProgress = progress
-                } else if(!viewModel.task.isComplete && progress > 0.20){
-                    if(viewModel.task.completeTriggered == .incomplete){
-                        viewModel.taskCompleted(self)
-                        strikethroughView.play(fromProgress: 0.25, toProgress: 0.5, completion: { _ in
-                            UIView.animate(withDuration: 0.3) {
-                                self.taskLabel.alpha = 0.5
-                            }
-                            self.checkboxView.isHidden = false
-                            self.checkboxView.play()
-                        })
-                    }
+                } else if(!viewModel.task.isComplete && viewModel.task.completeTriggered == .incomplete && progress > 0.20){
+                    viewModel.taskCompleted(self)
+                    strikethroughView.play(fromProgress: 0.25, toProgress: 0.5, completion: { _ in
+                        UIView.animate(withDuration: 0.3) {
+                            self.taskLabel.alpha = 0.5
+                        }
+                        self.checkboxView.isHidden = false
+                        self.checkboxView.play()
+                    })
                 }
                 //animation: swiping strikethrough left
                 else if(viewModel.task.isComplete && progress < 0 && progress > -0.13){
                     let currProgress = 0.5 - abs(progress)
                     strikethroughView.currentProgress = currProgress
-                } else if(viewModel.task.isComplete && progress < 0 && progress < -0.13){
-                    if(viewModel.task.completeTriggered == .complete){
-                        viewModel.task.completeTriggered = .incomplete
-                        strikethroughView.play(fromProgress: 0.5, toProgress: 0)
-                        UIView.animate(withDuration: 0.8) {
-                            self.taskLabel.alpha = 1
-                        }
-                        checkboxView.play(fromProgress: 0.6, toProgress: 0, completion: { _ in
-                            self.checkboxView.isHidden = true
-                            viewModel.taskIncompleted(self)
-                        })
+                } else if(viewModel.task.isComplete && viewModel.task.completeTriggered == .complete && progress < 0 && progress < -0.13){
+                    viewModel.task.completeTriggered = .incomplete
+                    strikethroughView.play(fromProgress: 0.5, toProgress: 0)
+                    UIView.animate(withDuration: 0.8) {
+                        self.taskLabel.alpha = 1
                     }
+                    checkboxView.play(fromProgress: 0.6, toProgress: 0, completion: { _ in
+                        self.checkboxView.isHidden = true
+                        viewModel.taskIncompleted(self)
+                    })
                 }
             }
             // Reset the contentView position and textLabel transform

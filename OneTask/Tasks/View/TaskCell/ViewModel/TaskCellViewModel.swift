@@ -14,24 +14,25 @@ class TaskCellViewModel {
     var cancellables: Set<AnyCancellable> = []
     private(set) var deleteTapped = PassthroughSubject<TaskCell?, Never>()
     private(set) var completeTriggered = PassthroughSubject<TaskCell?, Never>()
+    private(set) var incompleteTriggered = PassthroughSubject<TaskCell?, Never>()
 
     func removeCancellables() {
         cancellables.removeAll()
     }
     
-    func deleteTapped(_ task: TaskCell) {
-        self.deleteTapped.send(task)
+    func deleteTapped(_ taskCell: TaskCell) {
+        self.deleteTapped.send(taskCell)
     }
     
-    func taskCompleted(_ task: TaskCell) {
-        self.task.isComplete = true
+    func taskCompleted(_ taskCell: TaskCell) {
+        self.completeTriggered.send(taskCell)
         self.task.completeTriggered = .complete
-        self.completeTriggered.send(task)
+        self.task.isComplete = true
     }
     
-    func taskIncompleted(_ task: TaskCell){
-        self.task.isComplete = false
+    func taskIncompleted(_ taskCell: TaskCell){
+        self.incompleteTriggered.send(taskCell)
         self.task.completeTriggered = .incomplete
-        self.completeTriggered.send(task)
+        self.task.isComplete = false
     }
 }
