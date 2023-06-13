@@ -168,9 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				44C5A40C2A12DBC20074E4E3 /* Fonts */,
-				44A274062A0DA14900B52886 /* OneTask */,
-				44A274202A0DA14B00B52886 /* OneTaskTests */,
-				44A2742A2A0DA14B00B52886 /* OneTaskUITests */,
+				44A274062A0DA14900B52886 /* SnapTask */,
+				44A274202A0DA14B00B52886 /* SnapTaskTests */,
+				44A2742A2A0DA14B00B52886 /* SnapTaskUITests */,
 				44A274052A0DA14900B52886 /* Products */,
 				BE2FF0624432B22CF0FAD9F1 /* Pods */,
 				C9796B18CEE951EAE632B881 /* Frameworks */,
@@ -187,7 +187,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44A274062A0DA14900B52886 /* OneTask */ = {
+		44A274062A0DA14900B52886 /* SnapTask */ = {
 			isa = PBXGroup;
 			children = (
 				44A274072A0DA14900B52886 /* AppDelegate.swift */,
@@ -202,24 +202,24 @@
 				44A274102A0DA14900B52886 /* OneTask.xcdatamodeld */,
 				44A274182A0DA14B00B52886 /* Info.plist */,
 			);
-			path = OneTask;
+			path = SnapTask;
 			sourceTree = "<group>";
 		};
-		44A274202A0DA14B00B52886 /* OneTaskTests */ = {
+		44A274202A0DA14B00B52886 /* SnapTaskTests */ = {
 			isa = PBXGroup;
 			children = (
 				44A274212A0DA14B00B52886 /* OneTaskTests.swift */,
 			);
-			path = OneTaskTests;
+			path = SnapTaskTests;
 			sourceTree = "<group>";
 		};
-		44A2742A2A0DA14B00B52886 /* OneTaskUITests */ = {
+		44A2742A2A0DA14B00B52886 /* SnapTaskUITests */ = {
 			isa = PBXGroup;
 			children = (
 				44A2742B2A0DA14B00B52886 /* OneTaskUITests.swift */,
 				44A2742D2A0DA14B00B52886 /* OneTaskUITestsLaunchTests.swift */,
 			);
-			path = OneTaskUITests;
+			path = SnapTaskUITests;
 			sourceTree = "<group>";
 		};
 		44A2743B2A0DA26600B52886 /* Shared */ = {
