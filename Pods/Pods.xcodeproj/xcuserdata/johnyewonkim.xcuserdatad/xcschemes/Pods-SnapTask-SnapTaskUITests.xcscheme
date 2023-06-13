@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8985C242E5ADD8EAE8C8F1B57370A69"
-               BuildableName = "Pods_OneTask.framework"
-               BlueprintName = "Pods-OneTask"
+               BlueprintIdentifier = "AB51CB177C504293B375A3639C445783"
+               BuildableName = "Pods_SnapTask_SnapTaskUITests.framework"
+               BlueprintName = "Pods-SnapTask-SnapTaskUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

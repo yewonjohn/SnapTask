@@ -1,6 +1,0 @@
-framework module Pods_OneTask_OneTaskUITests {
-  umbrella header "Pods-OneTask-OneTaskUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

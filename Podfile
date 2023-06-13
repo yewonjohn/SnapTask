@@ -1,19 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'OneTask' do
+target 'SnapTask' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for OneTask
+  # Pods for SnapTask
   pod 'lottie-ios'
 
-  target 'OneTaskTests' do
+  target 'SnapTaskTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'OneTaskUITests' do
+  target 'SnapTaskUITests' do
     # Pods for testing
   end
 

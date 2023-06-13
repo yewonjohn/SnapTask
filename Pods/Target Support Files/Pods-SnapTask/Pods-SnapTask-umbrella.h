@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_OneTask_OneTaskUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_OneTask_OneTaskUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_SnapTaskVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_SnapTaskVersionString[];
 

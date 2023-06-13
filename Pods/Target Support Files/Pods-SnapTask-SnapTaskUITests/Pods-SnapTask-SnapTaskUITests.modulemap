@@ -1,0 +1,6 @@
+framework module Pods_SnapTask_SnapTaskUITests {
+  umbrella header "Pods-SnapTask-SnapTaskUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
