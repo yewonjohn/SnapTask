@@ -66,7 +66,7 @@
 		4419ABD52A140F82009DC89A /* AddTaskOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskOverlayView.swift; sourceTree = "<group>"; };
 		4419ABD72A155612009DC89A /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_semibold.otf; sourceTree = "<group>"; };
-		44A274042A0DA14900B52886 /* OneTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A274042A0DA14900B52886 /* SnapTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A274072A0DA14900B52886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44A274092A0DA14900B52886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		44A2740B2A0DA14900B52886 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -74,9 +74,9 @@
 		44A274132A0DA14B00B52886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44A274162A0DA14B00B52886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44A274182A0DA14B00B52886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44A2741D2A0DA14B00B52886 /* OneTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A2741D2A0DA14B00B52886 /* SnapTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A274212A0DA14B00B52886 /* OneTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTaskTests.swift; sourceTree = "<group>"; };
-		44A274272A0DA14B00B52886 /* OneTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A274272A0DA14B00B52886 /* SnapTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A2742B2A0DA14B00B52886 /* OneTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTaskUITests.swift; sourceTree = "<group>"; };
 		44A2742D2A0DA14B00B52886 /* OneTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44A274402A0DA50200B52886 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -174,9 +174,9 @@
 		44A274052A0DA14900B52886 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44A274042A0DA14900B52886 /* OneTask.app */,
-				44A2741D2A0DA14B00B52886 /* OneTaskTests.xctest */,
-				44A274272A0DA14B00B52886 /* OneTaskUITests.xctest */,
+				44A274042A0DA14900B52886 /* SnapTask.app */,
+				44A2741D2A0DA14B00B52886 /* SnapTaskTests.xctest */,
+				44A274272A0DA14B00B52886 /* SnapTaskUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -427,9 +427,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44A274032A0DA14900B52886 /* OneTask */ = {
+		44A274032A0DA14900B52886 /* SnapTask */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44A274312A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTask" */;
+			buildConfigurationList = 44A274312A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTask" */;
 			buildPhases = (
 				833D2C4871E5F80E825542BC /* [CP] Check Pods Manifest.lock */,
 				44A274002A0DA14900B52886 /* Sources */,
@@ -441,14 +441,14 @@
 			);
 			dependencies = (
 			);
-			name = OneTask;
+			name = SnapTask;
 			productName = OneTask;
-			productReference = 44A274042A0DA14900B52886 /* OneTask.app */;
+			productReference = 44A274042A0DA14900B52886 /* SnapTask.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44A2741C2A0DA14B00B52886 /* OneTaskTests */ = {
+		44A2741C2A0DA14B00B52886 /* SnapTaskTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44A274342A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTaskTests" */;
+			buildConfigurationList = 44A274342A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTaskTests" */;
 			buildPhases = (
 				61A22D5E8D88602CF1B4BB04 /* [CP] Check Pods Manifest.lock */,
 				44A274192A0DA14B00B52886 /* Sources */,
@@ -460,14 +460,14 @@
 			dependencies = (
 				44A2741F2A0DA14B00B52886 /* PBXTargetDependency */,
 			);
-			name = OneTaskTests;
+			name = SnapTaskTests;
 			productName = OneTaskTests;
-			productReference = 44A2741D2A0DA14B00B52886 /* OneTaskTests.xctest */;
+			productReference = 44A2741D2A0DA14B00B52886 /* SnapTaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		44A274262A0DA14B00B52886 /* OneTaskUITests */ = {
+		44A274262A0DA14B00B52886 /* SnapTaskUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44A274372A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTaskUITests" */;
+			buildConfigurationList = 44A274372A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTaskUITests" */;
 			buildPhases = (
 				3411E3B375AD4FD84DF5E90D /* [CP] Check Pods Manifest.lock */,
 				44A274232A0DA14B00B52886 /* Sources */,
@@ -480,9 +480,9 @@
 			dependencies = (
 				44A274292A0DA14B00B52886 /* PBXTargetDependency */,
 			);
-			name = OneTaskUITests;
+			name = SnapTaskUITests;
 			productName = OneTaskUITests;
-			productReference = 44A274272A0DA14B00B52886 /* OneTaskUITests.xctest */;
+			productReference = 44A274272A0DA14B00B52886 /* SnapTaskUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -508,7 +508,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 44A273FF2A0DA14900B52886 /* Build configuration list for PBXProject "OneTask" */;
+			buildConfigurationList = 44A273FF2A0DA14900B52886 /* Build configuration list for PBXProject "SnapTask" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -521,9 +521,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44A274032A0DA14900B52886 /* OneTask */,
-				44A2741C2A0DA14B00B52886 /* OneTaskTests */,
-				44A274262A0DA14B00B52886 /* OneTaskUITests */,
+				44A274032A0DA14900B52886 /* SnapTask */,
+				44A2741C2A0DA14B00B52886 /* SnapTaskTests */,
+				44A274262A0DA14B00B52886 /* SnapTaskUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -712,12 +712,12 @@
 /* Begin PBXTargetDependency section */
 		44A2741F2A0DA14B00B52886 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44A274032A0DA14900B52886 /* OneTask */;
+			target = 44A274032A0DA14900B52886 /* SnapTask */;
 			targetProxy = 44A2741E2A0DA14B00B52886 /* PBXContainerItemProxy */;
 		};
 		44A274292A0DA14B00B52886 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44A274032A0DA14900B52886 /* OneTask */;
+			target = 44A274032A0DA14900B52886 /* SnapTask */;
 			targetProxy = 44A274282A0DA14B00B52886 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -854,6 +854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32F88XU52W;
@@ -884,6 +885,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32F88XU52W;
@@ -925,7 +927,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OneTask";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SnapTask";
 			};
 			name = Debug;
 		};
@@ -946,7 +948,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OneTask";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SnapTask";
 			};
 			name = Release;
 		};
@@ -991,7 +993,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44A273FF2A0DA14900B52886 /* Build configuration list for PBXProject "OneTask" */ = {
+		44A273FF2A0DA14900B52886 /* Build configuration list for PBXProject "SnapTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44A2742F2A0DA14B00B52886 /* Debug */,
@@ -1000,7 +1002,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44A274312A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTask" */ = {
+		44A274312A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44A274322A0DA14B00B52886 /* Debug */,
@@ -1009,7 +1011,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44A274342A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTaskTests" */ = {
+		44A274342A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTaskTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44A274352A0DA14B00B52886 /* Debug */,
@@ -1018,7 +1020,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44A274372A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "OneTaskUITests" */ = {
+		44A274372A0DA14B00B52886 /* Build configuration list for PBXNativeTarget "SnapTaskUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44A274382A0DA14B00B52886 /* Debug */,
