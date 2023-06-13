@@ -25,13 +25,6 @@ struct SideMenuView: View {
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
-                
-                Button(action: viewModel.viewProfile, label: {
-                    Text("View Profile")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .opacity(0.7)
-                })
             }
             
             //Menu buttons
@@ -46,8 +39,8 @@ struct SideMenuView: View {
             Spacer()
             
             VStack(alignment: .leading, spacing: 6) {
-                LogoutButton(image: "rectangle.righthalf.inset.fill.arrow.right", title: "Log out")
-                    .padding(.leading, -15)
+//                LogoutButton(image: "rectangle.righthalf.inset.fill.arrow.right", title: "Log out")
+//                    .padding(.leading, -15)
                 
                 Text("App Version \(viewModel.appVersion)")
                     .font(.caption)

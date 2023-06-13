@@ -21,8 +21,10 @@ class TaskCell : UITableViewCell {
     lazy var taskLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "proxima_nova_thin", size: 16)
-        label.textColor = .darkText
+        label.font = UIFont(name: "proxima_nova_light", size: 18)
+        label.textColor = UIColor(hex: "#374259")
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
     
@@ -52,7 +54,7 @@ class TaskCell : UITableViewCell {
     //MARK: - Lifecycle methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(hex: "#F1F6F9")
 
         setupViews()
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))

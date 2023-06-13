@@ -20,11 +20,11 @@ class MainViewModel: ObservableObject {
     
     //Replace this init with a load func when network call is implemented
     init() {
-        self.selectedTab = "Home"
+        self.selectedTab = "Tasks"
         self.showMenu = false
         
         self.username = "John Kim"
-        self.menuItems = [MenuItem(image: "house", title: "Home")]
+        self.menuItems = [MenuItem(image: "pencil", title: "Tasks"), MenuItem(image: "checkmark.circle", title: "Completed")]
         self.appVersion = "1.2"
     }
     

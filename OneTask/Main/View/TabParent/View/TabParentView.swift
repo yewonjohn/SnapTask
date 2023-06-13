@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  TabParentView.swift
 //  OneTask
 //
 //  Created by John Kim on 5/11/23.
@@ -17,9 +17,8 @@ struct TabParentView: View {
         ZStack {
             TabView(selection: $viewModel.selectedTab) {
                 TodoView(viewModel)
-                    .tag("Home")
+                    .tag("Tasks")
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 
             if viewModel.showMenu {
                 Rectangle()

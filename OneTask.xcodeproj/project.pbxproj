@@ -33,6 +33,10 @@
 		44C0FBD32A2017D900276D4C /* AddTaskOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0FBD22A2017D900276D4C /* AddTaskOverlayViewModel.swift */; };
 		44C5A40B2A12A7930074E4E3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5A40A2A12A7930074E4E3 /* TasksViewController.swift */; };
 		44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */; };
+		44D503D02A214F9B00FB63BF /* proxima_nova_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D503CF2A214F9B00FB63BF /* proxima_nova_light.otf */; };
+		44D503DE2A2193DA00FB63BF /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 44D503DD2A2193DA00FB63BF /* ProximaNova-Regular.otf */; };
+		44D503E52A2297F100FB63BF /* EditTaskOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D503E42A2297F100FB63BF /* EditTaskOverlayView.swift */; };
+		44D503E72A22981A00FB63BF /* EditTaskOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D503E62A22981A00FB63BF /* EditTaskOverlayViewModel.swift */; };
 		A5FECA6405F5502BB790A913 /* Pods_OneTask_OneTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8DEEBCF56141D67F23DC2D /* Pods_OneTask_OneTaskUITests.framework */; };
 		CCDF5AE80B6869788F0180F8 /* Pods_OneTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C089CDD93ACC2FC523869570 /* Pods_OneTask.framework */; };
 		FEC6F0C5E08E1F24C2C83A1F /* Pods_OneTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C8DBEC9F60A224F4915594 /* Pods_OneTaskTests.framework */; };
@@ -88,6 +92,10 @@
 		44C0FBD22A2017D900276D4C /* AddTaskOverlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskOverlayViewModel.swift; sourceTree = "<group>"; };
 		44C5A40A2A12A7930074E4E3 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_thin.otf; sourceTree = "<group>"; };
+		44D503CF2A214F9B00FB63BF /* proxima_nova_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proxima_nova_light.otf; sourceTree = "<group>"; };
+		44D503DD2A2193DA00FB63BF /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		44D503E42A2297F100FB63BF /* EditTaskOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskOverlayView.swift; sourceTree = "<group>"; };
+		44D503E62A22981A00FB63BF /* EditTaskOverlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskOverlayViewModel.swift; sourceTree = "<group>"; };
 		5A5DBCCA08375A6AA9F3088B /* Pods-OneTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.release.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		67896C3BE047EF6706E32555 /* Pods-OneTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTask.release.xcconfig"; path = "Target Support Files/Pods-OneTask/Pods-OneTask.release.xcconfig"; sourceTree = "<group>"; };
 		6EB231C5CCCB51165E34505D /* Pods-OneTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-OneTaskTests/Pods-OneTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -341,6 +349,7 @@
 		44C5A4062A12A1680074E4E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44D503E12A2297D200FB63BF /* EditTaskOverlay */,
 				44C0FBCF2A2017B400276D4C /* AddTaskOverlay */,
 				44C0FBCA2A1FBBFB00276D4C /* TaskCell */,
 				44C5A40A2A12A7930074E4E3 /* TasksViewController.swift */,
@@ -359,10 +368,37 @@
 		44C5A40C2A12DBC20074E4E3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				44D503DD2A2193DA00FB63BF /* ProximaNova-Regular.otf */,
+				44D503CF2A214F9B00FB63BF /* proxima_nova_light.otf */,
 				44C5A40D2A12DBD10074E4E3 /* proxima_nova_thin.otf */,
 				4419ABD92A159347009DC89A /* proxima_nova_semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		44D503E12A2297D200FB63BF /* EditTaskOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				44D503E22A2297DC00FB63BF /* View */,
+				44D503E32A2297E000FB63BF /* ViewModel */,
+			);
+			path = EditTaskOverlay;
+			sourceTree = "<group>";
+		};
+		44D503E22A2297DC00FB63BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44D503E42A2297F100FB63BF /* EditTaskOverlayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44D503E32A2297E000FB63BF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44D503E62A22981A00FB63BF /* EditTaskOverlayViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BE2FF0624432B22CF0FAD9F1 /* Pods */ = {
@@ -500,6 +536,8 @@
 				44C5A40E2A12DBD10074E4E3 /* proxima_nova_thin.otf in Resources */,
 				4419ABDA2A159347009DC89A /* proxima_nova_semibold.otf in Resources */,
 				44A274172A0DA14B00B52886 /* LaunchScreen.storyboard in Resources */,
+				44D503DE2A2193DA00FB63BF /* ProximaNova-Regular.otf in Resources */,
+				44D503D02A214F9B00FB63BF /* proxima_nova_light.otf in Resources */,
 				44A274142A0DA14B00B52886 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,8 +682,10 @@
 				44A274432A0DBEDA00B52886 /* MenuItemButton.swift in Sources */,
 				44A274082A0DA14900B52886 /* AppDelegate.swift in Sources */,
 				44A274452A0DC29900B52886 /* CustomCorners.swift in Sources */,
+				44D503E72A22981A00FB63BF /* EditTaskOverlayViewModel.swift in Sources */,
 				44C0FBCE2A2009AE00276D4C /* TaskCellViewModel.swift in Sources */,
 				44C0FBC92A1FB7D400276D4C /* TaskCell.swift in Sources */,
+				44D503E52A2297F100FB63BF /* EditTaskOverlayView.swift in Sources */,
 				44A2740A2A0DA14900B52886 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

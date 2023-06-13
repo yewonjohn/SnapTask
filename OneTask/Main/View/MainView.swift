@@ -1,5 +1,5 @@
 //
-//  HomeUIView.swift
+//  MainView.swift
 //  OneTask
 //
 //  Created by John Kim on 5/11/23.
@@ -17,7 +17,7 @@ struct MainView: View {
     var body: some View {
         
         ZStack{
-            Color.gray
+            Color(UIColor(hex: "#374259"))
                 .ignoresSafeArea()
             //Side menu
             ScrollView(getRect().height < 750 ? .vertical : .init(), showsIndicators: false, content: {
@@ -26,15 +26,15 @@ struct MainView: View {
             
             ZStack{
                 //Background Cards
-                Color.white
-                    .opacity(0.5)
+                Color.gray
+                    .opacity(0.3)
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
                     .shadow(color: Color.black.opacity(0.07), radius: 5, x: -5, y: 0)
                     .offset(x: mainViewModel.showMenu ? -25 : 0)
                     .padding(.vertical, 30)
                 
-                Color.white
-                    .opacity(0.4)
+                Color.gray
+                    .opacity(0.2)
                     .cornerRadius(mainViewModel.showMenu ? 15: 0)
                     .shadow(color: Color.black.opacity(0.07), radius: 5, x: -5, y: 0)
                     .offset(x: mainViewModel.showMenu ? -50 : 0)
@@ -45,8 +45,8 @@ struct MainView: View {
 
             }
             //Scaling and Moving the View
-            .scaleEffect(mainViewModel.showMenu ? 0.84 : 1)
-            .offset(x: mainViewModel.showMenu ? getRect().width - 140 : 0)
+            .scaleEffect(mainViewModel.showMenu ? 0.88 : 1)
+            .offset(x: mainViewModel.showMenu ? getRect().width - 175 : 0)
             .edgesIgnoringSafeArea(.all)
         }
         .overlay(
@@ -60,7 +60,7 @@ struct MainView: View {
                             .fill(mainViewModel.showMenu ? Color.white : Color.black)
                             .frame(width: 30, height: 3)
                             .rotationEffect(.init(degrees: mainViewModel.showMenu ? -50 : 0))
-                            .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 9 : 0)
+                            .offset(x: mainViewModel.showMenu ? 2 : 0, y: mainViewModel.showMenu ? 10 : 0)
 
                         VStack(spacing: 5, content: {
                             Capsule()
@@ -69,7 +69,7 @@ struct MainView: View {
                             Capsule()
                                 .fill(mainViewModel.showMenu ? Color.white : Color.black)
                                 .frame(width: 30, height: 3)
-                                .offset(y: mainViewModel.showMenu ? -8 : 0)
+                                .offset(y: mainViewModel.showMenu ? -10 : 0)
                         })
                         .rotationEffect(.init(degrees: mainViewModel.showMenu ? 50 : 0))
                     })

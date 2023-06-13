@@ -1,5 +1,5 @@
 //
-//  HomeMenuButton.swift
+//  MenuItemButton.swift
 //  OneTask
 //
 //  Created by John Kim on 5/11/23.
@@ -30,13 +30,12 @@ struct MenuItemButton: View {
                 Text(title)
                     .fontWeight(.semibold)
             }
-            .foregroundColor(viewModel.selectedTab == title ? Color.blue : .white)
+            .foregroundColor(viewModel.selectedTab == title ? Color(UIColor(hex: "#374259")) : .white)
             .padding(.vertical, 12)
             .padding(.horizontal, 10)
             //Max frame
-            .frame(maxWidth: getRect().width - 170, alignment: .leading)
+            .frame(maxWidth: getRect().width - 230, alignment: .leading)
             .background(
-            
                 //Hero animation
                 ZStack{
                     if viewModel.selectedTab == title {

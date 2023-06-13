@@ -4,8 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>proxima_nova_thin</string>
-		<string>proxima_nova_semibold</string>
+		<string>proxima_nova_thin.otf</string>
+		<string>proxima_nova_semibold.otf</string>
+		<string>proxima_nova_light.otf</string>
+		<string>ProximaNova-Regular.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

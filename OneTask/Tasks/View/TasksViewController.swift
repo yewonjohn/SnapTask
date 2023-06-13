@@ -14,13 +14,13 @@ import Combine
 class TasksViewController : UIViewController {
     //MARK: - Properties
     let mainViewModel : MainViewModel
-    let homeViewModel: TasksViewModel
+    let tasksViewModel: TasksViewModel
     var rowStates: [IndexPath: Bool] = [:]
 
     //MARK: - Lifecycle methods
-    init(viewModel: MainViewModel, homeViewModel: TasksViewModel) {
+    init(viewModel: MainViewModel, tasksViewModel: TasksViewModel) {
         self.mainViewModel = viewModel
-        self.homeViewModel = homeViewModel
+        self.tasksViewModel = tasksViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,10 +37,11 @@ class TasksViewController : UIViewController {
     //MARK: - UI Properties
     lazy var addTaskOverlayView : AddTaskOverlayView = {
         let addTaskOverlayView = AddTaskOverlayView(AddTaskOverlayViewModel())
+        addTaskOverlayView.translatesAutoresizingMaskIntoConstraints = false
         if let viewModel = addTaskOverlayView.viewModel {
             viewModel.addTask.compactMap{$0}
                 .sink{ text in
-                    self.homeViewModel.addTask(text: text) {
+                    self.tasksViewModel.addTask(text: text) {
                         self.tableView.reloadData()
                     }
                     self.mainViewModel.enableMenuButton()
@@ -56,34 +57,42 @@ class TasksViewController : UIViewController {
         return addTaskOverlayView
     }()
     
+    lazy var editTaskOverlayView : EditTaskOverlayView = {
+       let editTaskOverlayView = EditTaskOverlayView(EditTaskOverlayViewModel())
+        editTaskOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        return editTaskOverlayView
+    }()
+    
     lazy var backgroundView : UIView = {
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .white
+        backgroundView.backgroundColor = UIColor(hex: "#F1F6F9")
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         return backgroundView
     }()
     
     lazy var headerView : UIView = {
         let headerView = UIView()
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = UIColor(hex: "#F1F6F9")
         headerView.translatesAutoresizingMaskIntoConstraints = false
         return headerView
     }()
     
     lazy var headerIcon : LottieAnimationView = {
-       let headerIcon = LottieAnimationView(name: "notes")
+       let headerIcon = LottieAnimationView(name: "pencil")
         headerIcon.contentMode = .scaleAspectFit
+        headerIcon.tintColor = UIColor(hex: "#374259")
         headerIcon.loopMode = .playOnce
-        headerIcon.animationSpeed = 3
+        headerIcon.currentProgress = 0.05
+        headerIcon.animationSpeed = 2
         headerIcon.translatesAutoresizingMaskIntoConstraints = false
         return headerIcon
     }()
     
     lazy var titleLabel : UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "OneTask"
-        titleLabel.font = UIFont.systemFont(ofSize: 30)
-        titleLabel.textColor = .darkText
+        titleLabel.text = "SnapTask"
+        titleLabel.font = UIFont(name: "ProximaNova-Regular", size: 30)
+        titleLabel.textColor = UIColor(hex: "#374259")
         titleLabel.textAlignment = .left
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
@@ -91,17 +100,17 @@ class TasksViewController : UIViewController {
     
     lazy var tableView : UITableView = {
        let tableView = UITableView()
+        tableView.backgroundColor = UIColor(hex: "#F1F6F9")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TaskCell.self, forCellReuseIdentifier: TaskCell.resuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
         return tableView
     }()
 
     //MARK: - Setup methods
     func configureLayout(){
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: "#F1F6F9")
         
         view.addSubview(backgroundView)
         view.addSubview(headerView)
@@ -109,35 +118,40 @@ class TasksViewController : UIViewController {
         headerView.addSubview(titleLabel)
         view.addSubview(tableView)
         view.addSubview(addTaskOverlayView)
+        view.addSubview(editTaskOverlayView)
         
-        backgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
         backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true
 
         headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        headerIcon.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
-        headerIcon.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 90).isActive = true
+        headerIcon.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: -10).isActive = true
+        headerIcon.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         headerIcon.heightAnchor.constraint(equalToConstant: 75).isActive = true
         headerIcon.widthAnchor.constraint(equalToConstant: 75).isActive = true
         
         titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: headerIcon.trailingAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
         
         tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-        addTaskOverlayView.translatesAutoresizingMaskIntoConstraints = false
-        addTaskOverlayView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        addTaskOverlayView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
         addTaskOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         addTaskOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        addTaskOverlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        addTaskOverlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true
+        
+        editTaskOverlayView.topAnchor.constraint(equalTo: view.topAnchor, constant: -100).isActive = true
+        editTaskOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        editTaskOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        addTaskOverlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true
     }
 }
 //MARK: - Gesture animations
@@ -150,7 +164,7 @@ extension TasksViewController : UIGestureRecognizerDelegate {
         let offsetY = scrollView.contentOffset.y
         let translation = scrollView.panGestureRecognizer.translation(in: view)
         let progress = translation.y / self.view.bounds.size.height
-        let limitProgress = min(0.55, progress * 2)
+        let limitProgress = min(0.05, progress)
         
         if offsetY < 0 && abs(offsetY) >= view.bounds.height * 0.15 {
             addTaskOverlayView.isHidden = false
@@ -160,9 +174,9 @@ extension TasksViewController : UIGestureRecognizerDelegate {
             }
         }
         if offsetY < 0 {
-            self.headerIcon.play(fromProgress: limitProgress, toProgress: 0, loopMode: .playOnce)
+            self.headerIcon.play(fromProgress: progress, toProgress: 0.05, loopMode: .playOnce)
         }
-        UIView.animate(withDuration: 0.3){
+        UIView.animate(withDuration: 0.2){
             self.headerIcon.transform = .identity
         }
     }
@@ -172,15 +186,15 @@ extension TasksViewController : UIGestureRecognizerDelegate {
         let translation = scrollView.panGestureRecognizer.translation(in: view)
         let offsetY = scrollView.contentOffset.y
         let progress = translation.y / self.view.bounds.size.height
-        let limitProgress = min(0.55, progress * 2)
+        let limitProgress = max(0.05, progress)
 
-        let maxFontSize: CGFloat = 34.0
-        let minFontSize: CGFloat = 30.0
+        let maxFontSize: CGFloat = 33
+        let minFontSize: CGFloat = 30
         let maxScrollOffset: CGFloat = 100.0
         let fontSizeRange = maxFontSize - minFontSize
         
         let fontSize = max(maxFontSize - ((offsetY / maxScrollOffset) * fontSizeRange), minFontSize)
-        let font = UIFont.systemFont(ofSize: fontSize)
+        let font = UIFont(name: "ProximaNova-Regular", size: fontSize)
         titleLabel.font = font
         
         switch recognizer.state {
@@ -191,11 +205,11 @@ extension TasksViewController : UIGestureRecognizerDelegate {
                         UIView.animate(withDuration: 0.5) {
                             self.addTaskOverlayView.alpha = 1.0
                         }
-                        self.headerIcon.play(fromProgress: limitProgress, toProgress: 0, loopMode: .playOnce)
+                        self.headerIcon.play(fromProgress: progress, toProgress: 0.05, loopMode: .playOnce)
                     }
                 }
                 if(offsetY < 0){
-                    let maxScale: CGFloat = 1.5
+                    let maxScale: CGFloat = 1.35
                     let minScale: CGFloat = 1.0
                     let scaleRange = maxScale - minScale
                     let scale = min(maxScale, max(minScale, 1 + (-offsetY / maxScrollOffset) * scaleRange))
@@ -212,12 +226,12 @@ extension TasksViewController : UIGestureRecognizerDelegate {
 extension TasksViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeViewModel.tasks.count
+        return tasksViewModel.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskCell.resuseIdentifier) as! TaskCell
-        let task = homeViewModel.tasks[indexPath.row]
+        let task = tasksViewModel.tasks[indexPath.row]
 
         cell.configure(with: task, viewModel: TaskCellViewModel())
         if let viewModel = cell.viewModel {
@@ -225,20 +239,20 @@ extension TasksViewController : UITableViewDelegate, UITableViewDataSource {
             viewModel.completeTriggered.compactMap{$0}
                 .sink { taskCell in
                     guard let indexPath = tableView.indexPath(for: taskCell) else { return }
-                    self.homeViewModel.completeTask(at: indexPath.row)
+                    self.tasksViewModel.completeTask(at: indexPath.row)
                 }.store(in: &viewModel.cancellables)
             
             viewModel.incompleteTriggered.compactMap{$0}
                 .sink { taskCell in
                     guard let indexPath = tableView.indexPath(for: taskCell) else { return }
-                    self.homeViewModel.incompleteTask(at: indexPath.row)
+                    self.tasksViewModel.incompleteTask(at: indexPath.row)
                 }.store(in: &viewModel.cancellables)
             
             viewModel.deleteTapped.compactMap{$0}
                 .sink { taskCell in
                     guard let indexPath = tableView.indexPath(for: taskCell) else { return }
                         UIView.animate(withDuration: 0.3) {
-                            self.homeViewModel.removeTask(at: indexPath.row)
+                            self.tasksViewModel.removeTask(at: indexPath.row)
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .left)
                             self.tableView.endUpdates()
@@ -250,10 +264,47 @@ extension TasksViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let task = tasksViewModel.tasks[indexPath.row]
+
+        editTaskOverlayView.isHidden = false
+        editTaskOverlayView.taskTextView.text = task.text
+        UIView.animate(withDuration: 0.5) {
+            self.editTaskOverlayView.alpha = 0.9
+            self.mainViewModel.disableMenuButton()
+        }
+        
+        if let viewModel = editTaskOverlayView.viewModel {
+            viewModel.editTask.compactMap{$0}
+                .sink{ text in
+                    self.editTaskOverlayView.isHidden = true
+                    task.text = text
+                    self.tasksViewModel.updateTask(task)
+                    self.editTaskOverlayView.taskTextView.text = ""
+                }.store(in: &viewModel.cancellables)
+            viewModel.closeTapped.compactMap{$0}
+                .sink{ _ in
+                    self.editTaskOverlayView.isHidden = true
+                    self.mainViewModel.enableMenuButton()
+                    self.editTaskOverlayView.taskTextView.text = ""
+                    self.tableView.reloadData()
+                }.store(in: &viewModel.cancellables)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    //This is to implement dynamic cell height
+    //        let yourData = homeViewModel.tasks[indexPath.row]
+    //        let cellWidth = tableView.bounds.width
+    //
+    //        let label = UILabel()
+    //        label.numberOfLines = 2
+    //        label.text = yourData.text
+    //
+    //        let labelSize = label.sizeThatFits(CGSize(width: cellWidth, height: CGFloat.greatestFiniteMagnitude))
+    //        let finalHeight = labelSize.height + 10
+    //
+    //        return finalHeight
     }
 }
 
@@ -266,7 +317,7 @@ struct TodoView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> TasksViewController {
-        let todoViewController = TasksViewController(viewModel: viewModel, homeViewModel: TasksViewModel())
+        let todoViewController = TasksViewController(viewModel: viewModel, tasksViewModel: TasksViewModel())
         return todoViewController
     }
     

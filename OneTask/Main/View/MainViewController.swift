@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
 
         // Create a UIHostingController with MySwiftUIView as its root view
         let mainViewModel = MainViewModel()
-        let homeUIView = MainView().environmentObject(mainViewModel)
-        let hostingController = UIHostingController(rootView: homeUIView)
+        let mainUIView = MainView().environmentObject(mainViewModel)
+        let hostingController = UIHostingController(rootView: mainUIView)
 
         // Add the hosting controller as a child view controller and set its constraints
         addChild(hostingController)

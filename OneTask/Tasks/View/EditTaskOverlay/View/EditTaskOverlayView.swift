@@ -1,20 +1,20 @@
 //
-//  AddTaskOverlayView.swift
+//  EditTaskOverlayView.swift
 //  OneTask
 //
-//  Created by John Kim on 5/16/23.
+//  Created by John Kim on 5/27/23.
 //
 
 import UIKit
 import SwiftUI
 
-class AddTaskOverlayView: UIView {
+class EditTaskOverlayView: UIView {
     //MARK: - Properties
-    var viewModel: AddTaskOverlayViewModel?
+    var viewModel: EditTaskOverlayViewModel?
     var panGestureRecognizer: UIPanGestureRecognizer!
 
     //MARK: - Lifecycle methods
-    required init(_ viewModel: AddTaskOverlayViewModel){
+    required init(_ viewModel: EditTaskOverlayViewModel){
         super.init(frame: CGRect.zero)
         self.viewModel = viewModel
         configureLayout()
@@ -31,14 +31,11 @@ class AddTaskOverlayView: UIView {
     }
     
     //MARK: - UI Properties
-    lazy var taskTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont(name: "ProximaNova-Regular", size: 28)
-        textView.isScrollEnabled = true
-        textView.textColor = UIColor(hex: "#394867")
-        textView.backgroundColor = .white
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    lazy var backgroundView: UIView = {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(hex: "#F1F6F9")
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        return backgroundView
     }()
     
     lazy var addTaskButton : UIButton = {
@@ -49,8 +46,19 @@ class AddTaskOverlayView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 15
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addTaskButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(editTaskButtonTapped), for: .touchUpInside)
         return button
+    }()
+    
+    lazy var taskTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont(name: "ProximaNova-Regular", size: 28)
+        textView.isScrollEnabled = true
+        textView.textColor = UIColor(hex: "#394867")
+        textView.backgroundColor = .white
+        textView.delegate = self
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
     
     lazy var closeButton : UIButton = {
@@ -69,12 +77,13 @@ class AddTaskOverlayView: UIView {
     //MARK: - Setup methods
     private func configureLayout() {
         alpha = 0
-        backgroundColor = .white
+        backgroundColor = UIColor(hex: "#F1F6F9")
         isHidden = true
 
+//        addSubview(backgroundView)
         addSubview(taskTextView)
-        addSubview(closeButton)
         addSubview(addTaskButton)
+        addSubview(closeButton)
         
         taskTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25).isActive = true
         taskTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
@@ -90,10 +99,10 @@ class AddTaskOverlayView: UIView {
         addTaskButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
         addTaskButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -116).isActive = true
         addTaskButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
-    //MARK: - Action methods
-    @objc private func addTaskButtonTapped() {
+    @objc private func editTaskButtonTapped() {
         guard let taskText = taskTextView.text, taskText != "" else {
             UIView.animate(withDuration: 0.3, animations: {
                 self.alpha = 0
@@ -108,7 +117,7 @@ class AddTaskOverlayView: UIView {
         }) { _ in
             self.isHidden = true
         }
-        viewModel?.addTask(taskTextView.text)
+//        viewModel?.(taskTextView.text)
         taskTextView.text = ""
         endEditing(true)
     }
@@ -120,7 +129,6 @@ class AddTaskOverlayView: UIView {
             self.isHidden = true
         }
         viewModel?.dismissScreen()
-        taskTextView.text = ""
         endEditing(true)
     }
     
@@ -138,8 +146,14 @@ class AddTaskOverlayView: UIView {
     
 }
 
+extension EditTaskOverlayView : UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        viewModel?.editTask(text: textView.text)
+    }
+}
+
 //MARK: - Keyboard config
-extension AddTaskOverlayView {
+extension EditTaskOverlayView {
     func addDoneButtonToKeyboard(textInput: UITextInput) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
