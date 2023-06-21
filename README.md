@@ -19,7 +19,8 @@ The SnapTask project is a minimalistic todo list application that leverages inte
 - Tap on checkmark: Removes the task 
 
 ### Screenshots
-https://github.com/yewonjohn/SnapTask/assets/45464860/a6a0e963-89c4-46f4-8492-ab8a27358f59
+https://github.com/yewonjohn/SnapTask/assets/45464860/6c50f771-d815-4375-a6d5-6d1c998f5611
+
 
 
 
